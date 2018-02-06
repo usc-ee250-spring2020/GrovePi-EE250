@@ -13,8 +13,8 @@ def Main():
 
     # UDP is connectionless, so a client does not formally connect to a server
     # before sending a message.
-    message = input("message-> ")
     dst_port = input("destination port-> ")
+    message = input("message-> ")
     while message != 'q':
         #tuples are immutable so we need to overwrite the last tuple
         server = (server_addr, int(dst_port))
@@ -24,8 +24,8 @@ def Main():
         data, addr = s.recvfrom(1024)
         data = data.decode('utf-8')
         print("Received from server: " + data)
-        message = input("message-> ")
         dst_port = input("destination port-> ")
+        message = input("message-> ")
     s.close()
 
 if __name__ == '__main__':
