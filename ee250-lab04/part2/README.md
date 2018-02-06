@@ -12,7 +12,8 @@ run both the server scripts, each in a different terminal:
     python3 udpServer1.py
     python3 udpServer2.py
 
-Question 1: What happens when you run both server scripts?
+Question 1: What happens when you try to run both server scripts? Copy-paste the 
+output into your lab answer sheet.
 
 Stop any running instances of the server scripts by clicking anywhere inside the
 terminal window to bring it into focus and pressing `Ctrl+c`. This sends the 
@@ -26,20 +27,27 @@ messages to the two different processes by varying the destination port for each
 message.
 
 Now, we'll run the code on two separate machines (your VM and rpi). Don't worry 
-about pushing any of your changes. We'll do this manually. Login to your 
-rpi and clone this repository under a directory with a lab partner's name 
-(remember, this step is important because the rpis may be used by someone else!).
-`cd` into this directory. Since we did NOT push our changes, you will have to
-use a text editor to change the IP addresses and port numbers on the two 
-different server scripts. To find the LAN IP addresses of your VM and 
+about pushing any of your changes. We'll do this manually using a text editor
+on your rpi. Login to your rpi and clone this repository under the directory you 
+have been using for the RIOT-EE250 labs. Remember, this step is important 
+because the rpis may be used by someone else!
 
+We want to send packets from our VMs over the local area network to the rpi . To
+do this, we need the rpi to listen (or bind) to the LAN IPs. On your rpi, find
+the LAN IP by typing `ifconfig` in the terminal. We will leave it as an exercise
+to figure out which IPv4 address in the output is the LAN address. Write this
+IP address down.
+
+In both server scripts, set the `host` variable to the IPv4 address of the rpi.
+Also, change the port numbers to be two different nubmers in the 9000s range. 
 Once you are finished, run the first server, `python3 udpServer1.py`. In your VM,
 open up another terminal and initiate another SSH session with your rpi. `cd`
-into this directory and `python3 udpServer2.py`.
+into this directory and run `python3 udpServer2.py`.
 
-On your VM:
-
- 1)Open a terminal and run udpClient.py
-
-
-
+On your VM, change the `host` variable to the IPv4 address of the VM. Use the 
+same method you used for the rpi to find the VM's IP address. Note, this will 
+NOT be a similar IP address because VirtualBox essentailly turns your host 
+OS into another router. When virtual machines are turned on, your host acts like
+a router plugged into our class's router (although this is over WiFi instead of
+an ethernet cable). Run the `udpClient.py` script and see if you can send 
+messages to your rpi.
