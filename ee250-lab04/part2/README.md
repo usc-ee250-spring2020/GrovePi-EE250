@@ -103,11 +103,13 @@ following setup:
 Note the use of port 8000 and 8001 under the Host Port column. Please use these
 two ports for your rules. Once you have your port forwarding rules set, 
 you can try to run all three scripts. On your VM, set the `host` variable in 
-both server scripts to the IPv4 address of your VM (e.g. 10.0.2.15 for the example setup above). Also, change 
-the port numbers to be the two different nubmers in the 9000s range you used in
+both server scripts to the IPv4 address of your VM (e.g. 10.0.2.15 for the 
+example setup above). Also, change
+the port numbers to be the two different numbers in the 9000s range you used in
 your port forwarding rules. Once you are finished, run both server scripts in
-separate terminals. In the terminal that is in an SSH session with your rpi, 
-change the `host` variable to your host OS's IP address (e.g. 192.168.1.183 in
-the example setup above). Run `python3 udpClient.py` and try to send a message
-to the two processes running on your VM by using **ports 8000 and 8001**. If you
-are successful, move on to part 3.
+separate terminals. In the terminal with the SSH session to your rpi, 
+change the `host` variable in `udpClient.py` to your rpi's IP address and change
+the `server` variable to your host OS's IP address (NOT your VM's IP Address). 
+Run `python3 udpClient.py` and try to send a message to the two processes 
+running on your VM by using **ports 8000 and 8001**. If you are successful, move
+on to part 3.
