@@ -40,13 +40,16 @@ Write a script in the `ultrasonicClient.py` and `ultrasonicServer.py` files
 provided to stream the distance output from the ultrasonic sensor connected to 
 your rpi to your VM every 110ms using UDP packets. *Note: the firmware loaded 
 into the Atmega328P and grovepi.py library have a total call time of 110ms so
-you do not need to add any `time.sleep()` calls. We can use UDP here because 
+you do not need to add any `time.sleep()` calls.* We can use UDP here because 
 we're not too worried about lost packets. See below to determine where to run 
 each script.
 
 On your VM:
+
     python3 ultrasonicServer.py
+
 On your RPi:
+
     python3 ultrasonicClient.py
 
 #### Second Program Pair (LED and TCP):
@@ -56,8 +59,11 @@ Using a TCP socket to increase reliability, code an application inside the
 to the GrovePi from your VM. 
 
 On your RPi:
+
     python3 ultrasonicServer.py
+
 On your VM:
+
     python3 ultrasonicClient.py
 
 Your application should turn on the LED when you send the string "LED_ON" from 
