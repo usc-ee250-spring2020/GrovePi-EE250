@@ -1,6 +1,4 @@
-import sys
-# By appending the folder of all the GrovePi libraries to the system path here,
-# we are successfully `from grovepi import *`
-sys.path.append('../../Software/Python/')
-
-#use UDP
+#Ultrasonic Sensor Server
+#
+# This code runs on your VM and receives a stream of packets holding ultrasonic
+# sensor data and prints it to stdout. Use a UDP socket here.
