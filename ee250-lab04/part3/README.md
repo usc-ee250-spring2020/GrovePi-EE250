@@ -20,9 +20,10 @@ installation script:
 before moving forward. As a developer, avoiding reading outputs and assuming 
 things worked correctly is a bad practice.** The script above clones the main 
 GrovePi repo to `~/Dexter/GrovePi/` (do you remember what the tilda means?). 
-We'll use that directory to run the firmware update bash script.
+We'll use that directory to run the firmware update bash script. Change
+directory to `~/Dexter/GrovePi/Firmware` and then execute the bash script.
 
-    sudo bash ~/Dexter/GrovePi/Firmware/firmware_update.sh
+    ./firmware_update.sh
 
 ## **Step 2**
 
