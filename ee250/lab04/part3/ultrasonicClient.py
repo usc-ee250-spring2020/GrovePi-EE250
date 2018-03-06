@@ -7,6 +7,6 @@
 import sys
 # By appending the folder of all the GrovePi libraries to the system path here,
 # we are able to successfully `import grovepi`
-sys.path.append('../../Software/Python/')
+sys.path.append('../../../Software/Python/')
 
 import grovepi
