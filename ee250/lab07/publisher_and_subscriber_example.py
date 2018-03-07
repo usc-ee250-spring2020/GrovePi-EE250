@@ -10,7 +10,8 @@ portion of this code and start reading!"""
 #Custom callbacks need to be structured with three args like on_message()
 def custom_callback(client, userdata, message):
     #the third argument is 'message' here unlike 'msg' in on_message 
-    print("custom_callback: " + message.topic + " " + str(message.payload))
+    print("custom_callback: " + message.topic + " " + "\"" + 
+        str(message.payload, "utf-8") + "\"")
     print("custom_callback: message.payload is of type " + 
           str(type(message.payload)))
 
@@ -46,7 +47,7 @@ def on_message(client, userdata, msg):
     to convert it manually. Yes, a *byte* string is different from a string in
     python! Python's approach to strings is very different from C/C++. You'll 
     have to look this one up on your own to better understand python strings."""
-    print("on_message: " + msg.topic + " " + str(msg.payload))
+    print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
     print("on_message: msg.payload is of type " + str(type(msg.payload)))
 
 
