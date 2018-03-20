@@ -1,9 +1,6 @@
 import paho.mqtt.client as mqtt
 import time
 
-# set to 1 to enable debugging print statements
-DEBUG = 0
-
 # MQTT variables
 broker_hostname = ''
 broker_port = 1883
@@ -16,7 +13,6 @@ ultrasonic_ranger2_topic = "ultrasonic_ranger2"
 MAX_LIST_LENGTH = 100
 ranger1_dist = []
 ranger2_dist = []
-
 
 def ranger1_callback(client, userdata, message):
     ranger1_dist.append(int(msg.payload))
@@ -41,22 +37,23 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg): 
     print(msg.topic + " " + str(msg.payload))
 
-# Connect to broker and start loop    
-client = mqtt.Client()
-client.on_connect = on_connect
-client.on_message = on_message
-if broker_name == '':
-    print "Change the broker address"
-    exit()
-client.connect(broker_name, broker_port, 60)
-client.loop_start()
+if __name__ == '__main__':
+    # Connect to broker and start loop    
+    client = mqtt.Client()
+    client.on_connect = on_connect
+    client.on_message = on_message
+    client.connect(broker_hostname, broker_port, 60)
+    client.loop_start()
 
-while True:
-    
-    # You have two lists (ranger1_dist and ranger2_dist), which are your two signals
-    # The signals are published with interval of 200 ms (5 samples per second each signal)
-    # The values are the distance in cm to the closest object. Expect values between 0 and 512
-    
-    # TO-DO - Detect when a person pass by and what direction he/she is going
-    
-    time.sleep(0.01)
+    while True:
+        """ You have two lists, ranger1_dist and ranger2_dist, which hold a window
+        of the past MAX_LIST_LENGTH samples published by ultrasonic ranger 1
+        and 2, respectively. The signals are published roughly at intervals of
+        200ms, or 5 samples/second (5 Hz). The values published are the 
+        distances in centimeters to the closest object. Expect values between 
+        0 and 512. However, these rangers do not detect people well beyond 
+        ~125cm. """
+        
+        # TODO: detect movement and/or position
+        
+        time.sleep(0.2)
