@@ -2,8 +2,8 @@ import paho.mqtt.client as mqtt
 import time
 
 # MQTT variables
-broker_hostname = ''
-broker_port = 1883
+broker_hostname = "eclipse.usc.edu"
+broker_port = 11000
 ultrasonic_ranger1_topic = "ultrasonic_ranger1"
 ultrasonic_ranger2_topic = "ultrasonic_ranger2"
 
@@ -14,12 +14,14 @@ MAX_LIST_LENGTH = 100
 ranger1_dist = []
 ranger2_dist = []
 
-def ranger1_callback(client, userdata, message):
+def ranger1_callback(client, userdata, msg):
+    global ranger1_dist
     ranger1_dist.append(int(msg.payload))
     #truncate list to only have the last MAX_LIST_LENGTH values
     ranger1_dist = ranger1_dist[-MAX_LIST_LENGTH:]
 
-def ranger2_callback(client, userdata, message):
+def ranger2_callback(client, userdata, msg):
+    global ranger2_dist
     ranger2_dist.append(int(msg.payload))
     #truncate list to only have the last MAX_LIST_LENGTH values
     ranger2_dist = ranger2_dist[-MAX_LIST_LENGTH:]
@@ -55,5 +57,8 @@ if __name__ == '__main__':
         ~125cm. """
         
         # TODO: detect movement and/or position
+        
+        print("ranger1: " + str(ranger1_dist[-1:]) + ", ranger2: " + 
+            str(ranger2_dist[-1:])) 
         
         time.sleep(0.2)
