@@ -55,4 +55,7 @@ if __name__ == '__main__':
 
     while True:
         distance = grovepi.ultrasonicRead(grove_digital_port) 
+        print("distance (cm): " + str(distance))
         client.publish(topic, distance)
+
+
