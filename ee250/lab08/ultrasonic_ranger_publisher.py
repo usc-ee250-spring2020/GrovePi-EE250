@@ -70,6 +70,7 @@ if __name__ == '__main__':
             distance = (distance + 1) % 10
             time.sleep(0.2)
         else:
+            #ultrasonicRead() has a 60ms delay
             distance = grovepi.ultrasonicRead(grovepi_digital_port) 
             time.sleep(0.130)
 
