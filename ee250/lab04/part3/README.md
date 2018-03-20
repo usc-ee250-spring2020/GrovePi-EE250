@@ -40,7 +40,7 @@ Your challenge has two parts. We have provided 4 skeleton files for you.
 Write a script in the `ultrasonicClient.py` and `ultrasonicServer.py` files
 provided to stream the distance output from the ultrasonic sensor connected to 
 your rpi to your VM every 110ms using UDP packets. *Note: the firmware loaded 
-into the Atmega328P and grovepi.py library have a total call time of 110ms so
+into the Atmega328P and grovepi.py library has a total call time of 110ms so
 you do not need to add any `time.sleep()` calls.* We can use UDP here because 
 we're not too worried about lost packets. See below to determine where to run 
 each script.
