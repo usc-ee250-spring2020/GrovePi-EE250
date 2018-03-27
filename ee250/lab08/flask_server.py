@@ -19,7 +19,7 @@ def print_log_callback():
     # in a neat manner for displaying on a web browser
     response = jsonify(log.get())
 
-    # the object returned will be sent back as an http packet to the requester
+    # the object returned will be sent back as an http message to the requester
     return response 
 
 # This callback will be run when an HTTP POST request is sent to the URL
@@ -28,7 +28,7 @@ def print_log_callback():
 def add_event_callback():
     # because we have `from flask import request` above, the 'request' object
     # will (magically) be available when the callback is called. `request` is 
-    # the object that stores all the http packet data (header, payload, etc.). 
+    # the object that stores all the http message data (header, payload, etc.). 
     # Unfortunately, we will skip explaining how this object gets here because
     # the answer is a bit long.
     payload = request.get_json()
@@ -40,7 +40,7 @@ def add_event_callback():
     # 
     # payload = {
     #     'time': str(datetime.now()),
-    #     'event': "WALKING RIGHT"
+    #     'event': "Moving Right"
     # }
     log.append_event(payload)
 
@@ -48,7 +48,7 @@ def add_event_callback():
         'Return': "Event logged."
     }
 
-    # the object returned will be sent back as an http response packet to the requester
+    # the object returned will be sent back as an http response message to the requester
     return json.dumps(response)
 
 # A class to manage a list to avoid using a global list
@@ -67,8 +67,8 @@ if __name__ == '__main__':
     log = SignalProcessingEventLog()
 
     """Run the flask web application on '0.0.0.0'. The default port is 5000. 
-    Flask is not multi-threaded by nature and will hang when many HTTP packets
-    are sent to it, so we also ask flask to enable threading"""
+    Flask is not multi-threaded by nature and will hang when many HTTP messages
+    are received, so we also ask flask to enable threading."""
     app.run(threaded = True, host = '0.0.0.0') 
 
     """Note: Because flask is binding to 0.0.0.0, you will not be able to 

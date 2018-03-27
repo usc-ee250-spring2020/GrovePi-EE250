@@ -20,7 +20,7 @@ if __name__ == '__main__':
     # the HTTP message, we will format this into a json object
     payload = {
         'time': str(datetime.now()),
-        'event': "WALKING RIGHT"
+        'event': "Moving Right"
     }
 
     while True:
