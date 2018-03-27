@@ -34,9 +34,14 @@ def add_event_callback():
     payload = request.get_json()
     print(payload)
 
-    # assuming the payload is formatted exactly as we expect (see below), we will
-    # append the event to our log (a json with two
-    # key-value pairs with keys 'time' and 'event') 
+    # assuming the payload is formatted exactly as we expect, we will append the
+    # event to our log. The event object should be in a dictionary-like format 
+    # with the key value pairs like in the example below.
+    # 
+    # payload = {
+    #     'time': str(datetime.now()),
+    #     'event': "WALKING RIGHT"
+    # }
     log.append_event(payload)
 
     response = {
