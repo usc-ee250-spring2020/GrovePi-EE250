@@ -10,21 +10,21 @@ request.post() call everytime a movement is classified by your algorithm."""
 if __name__ == '__main__':
 
     # This header sets the HTTP request's mimetype to `application/json`. This
-    # means the payload of the http packet will be formatted as a json ojbect
+    # means the payload of the HTTP message will be formatted as a json ojbect
     hdr = {
         'Content-Type': 'application/json',
         'Authorization': None #not using HTTP secure
     }
 
-    # The payload of our packet starts as a simple dictionary. Before sending
-    # the HTTP packet, we will format this into a json object
+    # The payload of our message starts as a simple dictionary. Before sending
+    # the HTTP message, we will format this into a json object
     payload = {
         'time': str(datetime.now()),
         'event': "WALKING RIGHT"
     }
 
     while True:
-        # Send the packet together and block until a response is given.
+        # Send an HTTP POST message and block until a response is given.
         # Note: requests() is NOT the same thing as request() under the flask 
         # library.
         response = requests.post("http://0.0.0.0:5000/post-event", headers = hdr,
