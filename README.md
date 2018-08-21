@@ -1,8 +1,10 @@
 ## **EE 250L: Distributed Systems for the Internet of Things**
 
 This fork of the GrovePi repository is for the EE250L course. Please select the
-branch that corresponds to the semester you have taken the course. The skeleton
-code for the lab assignments lie inside the Software/Python/ directory.
+branch that corresponds to the semester you have taken the course. All course
+related information can be found in the `ee250` subfolder. Useful example code 
+that could be helpful for lab assignments lie inside the Software/Python/ 
+directory.
 
 ## **GrovePi: The Raspberry Pi Meets Grove Sensors**
 
