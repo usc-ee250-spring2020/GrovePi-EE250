@@ -3,6 +3,8 @@
 List team members here.
 
 Insert Github repository link here.
+
+Each team member should submit a copy of the team's code.
 """
 
 """python3 interpreters in Ubuntu (and other linux distros) will look in a 
@@ -12,7 +14,7 @@ Examples of some default directories are (but not limited to):
   /usr/local/lib/python3.5/dist-packages
 
 The `sys` module, however, is a builtin that is written in and compiled in C for
-performance.
+performance. Because of this, you will not find this in the default directories.
 """
 import sys
 # By appending the folder of all the GrovePi libraries to the system path here,
