@@ -10,4 +10,5 @@ sys.path.append('../../../Software/Python/')
 
 import grovepi
 
-# use TCP
+if __name__ == '__main__':
+    

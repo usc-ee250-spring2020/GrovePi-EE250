@@ -10,3 +10,6 @@ import sys
 sys.path.append('../../../Software/Python/')
 
 import grovepi
+
+if __name__ == '__main__':
+    
