@@ -1,4 +1,4 @@
-"""EE 250L Lab 07 Skeleton Code
+"""EE 250L Lab 04 Starter Code
 
 Run vm_subscriber.py in a separate terminal on your VM."""
 
