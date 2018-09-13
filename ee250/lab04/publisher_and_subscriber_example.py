@@ -96,11 +96,11 @@ if __name__ == '__main__':
     while (True):
         if select == 1:
             #publish a float
-            client.publish("anrg-pi0/defaultCallback", 1.23456)
+            client.publish("INSERT_RPI_HOSTNAME_HERE/defaultCallback", 1.23456)
             select ^= 1
         elif select == 0:
             #publish a string
-            client.publish("anrg-pi0/customCallback", "hello this is a string")
+            client.publish("INSERT_RPI_HOSTNAME_HERE/customCallback", "hello this is a string")
             select ^=1
         time.sleep(1)
 
