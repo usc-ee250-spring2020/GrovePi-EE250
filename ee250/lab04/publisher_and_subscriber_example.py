@@ -103,5 +103,3 @@ if __name__ == '__main__':
             client.publish("INSERT_RPI_HOSTNAME_HERE/customCallback", "hello this is a string")
             select ^= 1
         time.sleep(1)
-
-    #When you run this program, why do you see the float message first?
