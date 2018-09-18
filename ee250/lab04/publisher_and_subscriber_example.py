@@ -28,12 +28,12 @@ def on_connect(client, userdata, flags, rc):
     to a topic will default to messages received on said topic triggering the 
     callback attached to client.on_message, which we assigned below in __main__.
     """
-    client.subscribe("anrg-pi0/defaultCallback")
+    client.subscribe("INSERT_RPI_HOSTNAME_HERE/defaultCallback")
 
     #You can also add a custom callback to specific topics. First, you need to
     #subscribe to the topic. Then, add the callback.
-    client.subscribe("anrg-pi0/customCallback")
-    client.message_callback_add("anrg-pi0/customCallback", custom_callback)
+    client.subscribe("INSERT_RPI_HOSTNAME_HERE/customCallback")
+    client.message_callback_add("INSERT_RPI_HOSTNAME_HERE/customCallback", custom_callback)
 
 
 """This object (functions are objects!) serves as the default callback for 
