@@ -1,3 +1,9 @@
+"""EE 250L Lab 10 HTTP Client Example 
+
+Run this file after starting up a local flask server via flask_server.py to
+create example HTTP post requests.
+"""
+
 import requests
 import json
 from datetime import datetime

@@ -1,3 +1,13 @@
+"""EE 250L Lab 10 Signal Processing
+
+This file is the starter code for the lab assignment.
+
+TODO: List team members here.
+
+TODO: Insert Github repository link here.
+
+"""
+
 import paho.mqtt.client as mqtt
 import time
 

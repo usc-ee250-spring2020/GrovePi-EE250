@@ -1,3 +1,19 @@
+"""EE 250L Lab 10 Local Flask Server
+
+Run this file to start a local HTTP web server (i.e. it is only available to 
+processes running on your local machine). The web server simply saves any 
+JSON objects that are sent via an HTTP POST request. If you point a web browser 
+to 0.0.0.0:5000/log, which sends a HTTP GET request, the web server will reply
+with all the stored JSON objects. Run http_client_example.py to generate example
+HTTP POST requests and then open up your browser to the URL to see the output of
+the web server.
+
+TODO: List team members here.
+
+TODO: Insert Github repository link here.
+
+"""
+
 from flask import Flask
 from flask import jsonify
 from flask import request

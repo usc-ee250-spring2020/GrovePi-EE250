@@ -1,4 +1,4 @@
-"""EE 250L Lab 08 Ultrasonic Ranger 1 Publisher
+"""EE 250L Lab 10 Ultrasonic Ranger Publisher
 
 This file is used by the instructor to publish the distance readings from 
 either ultrasonic ranger 1 or ultrasonic ranger 2. Please refer to the lab 
