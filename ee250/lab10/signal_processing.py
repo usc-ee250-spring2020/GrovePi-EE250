@@ -14,8 +14,14 @@ import time
 # MQTT variables
 broker_hostname = "eclipse.usc.edu"
 broker_port = 11000
-ultrasonic_ranger1_topic = "ultrasonic_ranger1"
-ultrasonic_ranger2_topic = "ultrasonic_ranger2"
+
+#uncomment these lines to subscribe to real-time published data
+ultrasonic_ranger1_topic = "ultrasonic_ranger1/real_data"
+ultrasonic_ranger2_topic = "ultrasonic_ranger2/real_data"
+
+#uncomment these lines to subscribe to recorded data being played back in a loop
+# ultrasonic_ranger1_topic = "ultrasonic_ranger1/fake_data"
+# ultrasonic_ranger2_topic = "ultrasonic_ranger2/fake_data"
 
 # Lists holding the ultrasonic ranger sensor distance readings. Change the 
 # value of MAX_LIST_LENGTH depending on how many distance samples you would 
@@ -62,9 +68,12 @@ if __name__ == '__main__':
         of the past MAX_LIST_LENGTH samples published by ultrasonic ranger 1
         and 2, respectively. The signals are published roughly at intervals of
         200ms, or 5 samples/second (5 Hz). The values published are the 
-        distances in centimeters to the closest object. Expect values between 
-        0 and 512. However, these rangers do not detect people well beyond 
-        ~125cm. """
+        distances in centimeters to the closest object. The measurements can
+        technically take values up to 1024, but you will mainly see values 
+        between 0-700. Jumps in values will most likely be from 
+        inter-sensor-interference, so be sure to filter the signal accordingly
+        to remove these jumps. 
+        """
         
         # TODO: detect movement and/or position
         
