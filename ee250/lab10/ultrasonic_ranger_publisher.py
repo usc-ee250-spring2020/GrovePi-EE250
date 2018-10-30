@@ -1,4 +1,4 @@
-"""EE 250L Lab 10 Ultrasonic Ranger Publisher
+"""EE 250L Lab 10 Ultrasonic Ranger 1 Publisher
 
 This file is used by the instructor to publish the distance readings from 
 either ultrasonic ranger 1 or ultrasonic ranger 2. Please refer to the lab 
@@ -7,31 +7,33 @@ ranger.
 """
 
 # set to 1 to run test mode (i.e. running without an raspberry pi)
-TEST = 0
+TEST = 1 
 
 import paho.mqtt.client as mqtt
 import argparse
 import time
-
+# Import SPI library (for hardware SPI) and MCP3008 library.
+import random
 import sys
-# By appending the folder of all the GrovePi libraries to the system path here,
-# we are able to successfully `import grovepi`
-sys.path.append('../../Software/Python/')
 
 if TEST:
     print("Test Mode")
+    ultrasonic_ranger1_topic = "ultrasonic_ranger1/fake_data"
+    ultrasonic_ranger2_topic = "ultrasonic_ranger2/fake_data"
 else:
-    import grovepi
+    import Adafruit_GPIO.SPI as SPI
+    import Adafruit_MCP3008
+    #Hardware SPI configuration:
+    SPI_PORT   = 0
+    SPI_DEVICE = 0
+    mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
+    ultrasonic_ranger1_topic = "ultrasonic_ranger1/real_data"
+    ultrasonic_ranger2_topic = "ultrasonic_ranger2/real_data"
 
-# Determines which digital port the ultrasonic ranger is plugged into (e.g. a 
-# value of 4 would mean port D4)
-grovepi_digital_port = 4
 
 mqtt_broker_hostname = "eclipse.usc.edu"
 mqtt_broker_port = 11000
 
-ultrasonic_ranger1_topic = "ultrasonic_ranger1"
-ultrasonic_ranger2_topic = "ultrasonic_ranger2"
 
 def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
@@ -55,8 +57,10 @@ if __name__ == '__main__':
 
     if args.ultrasonicranger == '1':
         topic = ultrasonic_ranger1_topic
+        test_m = range(30, 200, 5)
     elif args.ultrasonicranger == '2':
         topic = ultrasonic_ranger2_topic
+        test_m = range(200, 30, -5)
 
     client = mqtt.Client()
     client.on_message = on_message
@@ -65,14 +69,15 @@ if __name__ == '__main__':
     # have paho.mqtt spawn a background thread for us
     client.loop_start()
 
+    i = 0
     while True:
         if TEST:
-            distance = (distance + 1) % 10
+            distance = test_m[i] + random.randint(-5, 5)
+            i = (i + 1) % len(test_m)
             time.sleep(0.2)
         else:
-            #ultrasonicRead() has a 60ms delay
-            distance = grovepi.ultrasonicRead(grovepi_digital_port) 
-            time.sleep(0.130)
+            distance = mcp.read_adc(0) 
+            time.sleep(0.2)
 
         print("topic: " + topic + ", distance (cm): " + str(distance))
         client.publish(topic, distance)
