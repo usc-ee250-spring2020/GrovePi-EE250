@@ -22,14 +22,14 @@ if __name__ == '__main__':
         'Authorization': None #not using HTTP secure
     }
 
-    # The payload of our message starts as a simple dictionary. Before sending
-    # the HTTP message, we will format this into a json object
-    payload = {
-        'time': str(datetime.now()),
-        'event': "Moving Right"
-    }
-
     while True:
+        # The payload of our message starts as a simple dictionary. Before sending
+        # the HTTP message, we will format this into a json object
+        payload = {
+            'time': str(datetime.now()),
+            'event': "Moving Right"
+        }
+
         # Send an HTTP POST message and block until a response is given.
         # Note: requests() is NOT the same thing as request() under the flask 
         # library.
