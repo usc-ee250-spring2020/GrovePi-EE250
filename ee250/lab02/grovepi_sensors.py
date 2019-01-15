@@ -17,6 +17,7 @@ The `sys` module, however, is a builtin that is written in and compiled in C for
 performance. Because of this, you will not find this in the default directories.
 """
 import sys
+import time
 # By appending the folder of all the GrovePi libraries to the system path here,
 # we are successfully `import grovepi`
 sys.path.append('../../Software/Python/')
@@ -29,10 +30,11 @@ import grovepi
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
+    PORT = 4    # D4
 
     while True:
         #So we do not poll the sensors too quickly which may introduce noise,
         #sleep for a reasonable time of 200ms between each iteration.
         time.sleep(0.2)
 
-        print(grovepi.ultrasonicRead(ultrasonic_ranger))
+        print(grovepi.ultrasonicRead(PORT))
