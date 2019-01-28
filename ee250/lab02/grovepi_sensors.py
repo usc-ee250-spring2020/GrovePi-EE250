@@ -3,8 +3,6 @@
 List team members here.
 
 Insert Github repository link here.
-
-Each team member should submit a copy of the team's code.
 """
 
 """python3 interpreters in Ubuntu (and other linux distros) will look in a 
