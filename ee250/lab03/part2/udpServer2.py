@@ -7,7 +7,7 @@ https://www.youtube.com/watch?v=bTThyxVy7Sk&index=6&list=PL1A2CSdiySGIPxpSlgzsZi
 import socket
 
 def Process2():
-    # Change the host and port as needed. For ports, use a number in the 9000 
+    # Change the host and port as needed. For ports, use a number in the 10000s
     # range. 
     host = '127.0.0.1'
     port = 5000
@@ -28,4 +28,3 @@ def Process2():
 
 if __name__ == '__main__':
     Process2()
-    
