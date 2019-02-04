@@ -4,7 +4,7 @@ import time
 
 """It is often best to read code starting from __main__ and reading the function 
 definitions as they show up in the code. This will help you understand the
-function defintions since you get a little more context. Jump to the __main__
+function definitions since you get a little more context. Jump to the __main__
 portion of this code and start reading!"""
 
 #Custom callbacks need to be structured with three args like on_message()
@@ -21,7 +21,7 @@ a connection acknowledgement packet) response from the server. """
 def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
 
-    """Once our client has successfully conected, it makes sense to subscribe to
+    """Once our client has successfully connected, it makes sense to subscribe to
     all the topics of interest. Also, subscribing in on_connect() means that, 
     if we lose the connection and the library reconnects for us, this callback
     will be called again thus renewing the subscriptions. Simply subscribing
@@ -51,7 +51,7 @@ def on_message(client, userdata, msg):
     print("on_message: msg.payload is of type " + str(type(msg.payload)))
 
 
-# If you do not remember what this if statement is for, look in lab04/part1.
+# If you do not remember what this if statement is for, look in lab03/part1.
 if __name__ == '__main__':
     #create a client object
     client = mqtt.Client()
@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
     """Connect using the following hostname, port, and keepalive interval (in 
     seconds). We added "host=", "port=", and "keepalive=" for illustrative 
-    pourposes. You can omit this in python. For example:
+    purposes. You can omit this in python. For example:
     
     `client.connect("eclipse.usc.edu", 11000, 60)` 
     
