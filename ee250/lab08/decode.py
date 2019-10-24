@@ -17,8 +17,8 @@ def get_max_frq(frq, fft):
     max_frq = 0
     max_fft = 0
     for idx in range(len(fft)):
-        if fft[idx] > max_fft:
-            max_fft = fft[idx]
+        if abs(fft[idx]) > max_fft:
+            max_fft = abs(fft[idx])
             max_frq = frq[idx]
     return max_frq
 
